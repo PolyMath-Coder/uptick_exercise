@@ -5,7 +5,7 @@ const catchAsync = require('express-async-handler');
 
 const registerUser = catchAsync(async (req, res) => {
   let data = req.user;
-  console.log(data);
+
   const authToken = await tokenService.generateAuthTokens(data);
 
   res.status(200).json({
@@ -37,8 +37,7 @@ const login = catchAsync((req, res, next) => {
           name: user.name,
         };
         const token = await tokenService.generateAuthTokens(body);
-        const maxAge = 3 * 24 * 60 * 60;
-        res.cookie('jwt', token, { httpOnly: true, maxAge: maxAge });
+
         res.status(200).json({
           status: 'success',
           message: 'Login Successful!',
