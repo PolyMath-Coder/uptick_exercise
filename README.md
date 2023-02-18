@@ -18,9 +18,7 @@
 
 ## Useful Links.
 
-Do peruse through the [Postman API Documentation](https://documenter.getpostman.com/view/15118089/2s93CGQap6) to have a comprehensive overview of all exposed endpoints.
-
-[Base URL for Live API](https://mainstack-fnwb.onrender.com)
+[Base URL for Live API](https://uptick-backend.onrender.com)
 
 ---
 
