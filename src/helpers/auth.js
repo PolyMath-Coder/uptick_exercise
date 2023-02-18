@@ -1,6 +1,5 @@
 const jwt = require('jsonwebtoken');
 const { JWT_SECRET } = require('../config/keys');
-const Post = require('../post/post.model');
 const userAuthentication = (req, res, next) => {
   const bearerHeader = req.headers.authorization;
   if (!bearerHeader) {
@@ -25,21 +24,6 @@ const userAuthentication = (req, res, next) => {
       return next();
     }
   });
-  // req.token = bearer;
-  // console.log(bearer[1]);
 };
 
-const authorAuthorization = async (req, res, next) => {
-  const { author } = await Post.findById(req.params.id);
-  if (!req.user || req.user._id != author) {
-    res.status(200).json({
-      status: 'access denied',
-      message:
-        'Ooppss! Only the author of a twit is allowed to perform this action...',
-    });
-    return;
-  }
-  next();
-};
-
-module.exports = { userAuthentication, authorAuthorization };
+module.exports = { userAuthentication };

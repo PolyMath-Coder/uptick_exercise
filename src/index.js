@@ -6,20 +6,18 @@ const passport = require('passport');
 require('dotenv').config();
 const { PORT } = require('./config/keys');
 const logger = require('./helpers/logger');
-// require('./auth/auth.service')(passport);
+require('./auth/auth.service')(passport);
 const app = express();
 app.use(json());
 app.use(urlencoded({ extended: true }));
 
-// app.use('/api', require('./routes/routes'));
+app.use('/api', require('./routes/routes'));
 const oneDay = 24 * 60 * 60 * 365 * 1000;
 app.get('/', (req, res) => {
-  res
-    .status(200)
-    .json({
-      message:
-        "You're welcome on Board to Uptick Talent Institute Backend Assessment Test!",
-    });
+  res.status(200).json({
+    message:
+      "You're welcome on Board to Uptick Talent Institute Backend Assessment Test!",
+  });
 });
 
 connectToDatabase();
