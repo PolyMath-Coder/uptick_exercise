@@ -25,6 +25,7 @@ const getNotes = async (criteria = {}) => {
   const { page, per_page } = criteria;
   const _page = parseInt(page, 10);
   const _per_page = parseInt(per_page, 10);
+
   return await Note.find()
     .skip(_per_page * (_page - 1))
     .limit(_per_page);
